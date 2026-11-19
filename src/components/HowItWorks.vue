@@ -14,7 +14,7 @@ const docs = ['Management accounts', 'Business plan', 'Historic accounts', 'Deta
 </script>
 
 <template>
-  <section class="how" aria-labelledby="how-title">
+  <section id="how" class="how" aria-labelledby="how-title">
     <picture>
       <source type="image/webp" :srcset="`${towerWebp960} 960w, ${towerWebp1920} 1920w`" sizes="100vw">
       <img class="bg" :src="towerJpg" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1920" height="1280">

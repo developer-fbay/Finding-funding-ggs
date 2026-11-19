@@ -5,7 +5,7 @@ import ReadMore from './ReadMore.vue'
 </script>
 
 <template>
-  <section class="section about" aria-labelledby="about-title">
+  <section id="about" class="section about" aria-labelledby="about-title">
     <div class="wrap grid">
       <div class="left">
         <div class="head">
@@ -27,7 +27,7 @@ import ReadMore from './ReadMore.vue'
         ]" />
         <div class="callout">
           <UserRoundCheck :size="28" class="icon icon-light" aria-hidden="true" />
-          <p><strong>Who handles your enquiry.</strong> Funding Finder is a broker, not a lender. Brokers aren’t accredited under the scheme. We’re not approved, accredited or endorsed by the British Business Bank, which runs it.</p>
+          <p><strong>Who handles your enquiry.</strong> Finding Funding is a broker, not a lender. Brokers aren’t accredited under the scheme. We’re not approved, accredited or endorsed by the British Business Bank, which runs it.</p>
         </div>
       </div>
     </div>

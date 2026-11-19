@@ -19,7 +19,7 @@ const weigh = [
 </script>
 
 <template>
-  <section class="section features" aria-labelledby="features-title">
+  <section id="features" class="section features" aria-labelledby="features-title">
     <div class="wrap">
       <div class="section-head">
         <div><h2 id="features-title" class="h2">Key features</h2></div>

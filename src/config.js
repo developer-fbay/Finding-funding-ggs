@@ -2,7 +2,7 @@
 const env = import.meta.env
 
 export const SITE = {
-  brand: 'Funding Finder',
+  brand: 'Finding Funding',
   formId: 'ggs_onepager',
   webhookUrl: env.VITE_WEBHOOK_URL || '',
   gtmId: env.VITE_GTM_ID || '',

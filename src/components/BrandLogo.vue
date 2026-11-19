@@ -6,7 +6,7 @@ defineProps({ size: { type: Number, default: 22 }, tone: { type: String, default
 <template>
   <span class="brand" :class="tone">
     <LogoMark :size="Math.round(size * 1.35)" :tone="tone" />
-    <span class="word" :style="{ fontSize: size + 'px' }">funding<span class="accent">finder</span></span>
+    <span class="word" :style="{ fontSize: size + 'px' }">finding<span class="accent">funding</span></span>
   </span>
 </template>
 

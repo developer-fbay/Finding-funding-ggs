@@ -28,7 +28,7 @@ const excludedOfficial = [
 </script>
 
 <template>
-  <section class="section section-soft" aria-labelledby="elig-title">
+  <section id="eligibility" class="section section-soft" aria-labelledby="elig-title">
     <div class="wrap">
       <div class="section-head">
         <div><p class="eyebrow">Eligibility restrictions</p><h2 id="elig-title" class="h2">Who can apply</h2></div>

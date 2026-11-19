@@ -1,4 +1,4 @@
-# Funding Finder · GGS one-pager (Vue)
+# Finding Funding · GGS one-pager (Vue)
 
 A one-page lead capture site about the Growth Guarantee Scheme (GGS), plus a privacy policy page.
 Built with **Vue 3 + Vite**, **Lucide** icons (`@lucide/vue`) and self-hosted **Inter / Inter Tight** fonts.
@@ -103,15 +103,17 @@ The aim is an easy read: short sentences, everyday words, all the vital facts. T
 
 - **Plain English on show, official wording one click away.** Each scheme fact is written in plain English. The British Business Bank's approved wording (toolkit pages 11–12) sits word for word underneath in an **"Official scheme info"** drop-down (`src/components/ReadMore.vue`, a native `<details>`, so it works without JavaScript and stays searchable). It opens and closes with a 320ms height animation (instant for reduced-motion users) and has an X button to close it.
 - **Risk points stay visible, never only in a drop-down:** you still owe 100%, interest and fees vary, personal guarantees may be taken, the lender decides (toolkit page 10).
-- **Footer legal text** is the toolkit's legal notice (page 13), kept word for word, so it scores higher. That's expected.
+- **Footer** follows lendpoint.co.uk's layout: brand and one-line description, two link columns, a bottom bar with copyright and "Broker, not a lender". The toolkit's optional legal notice (page 13) is no longer shown.
+- **FAQ answers and drop-downs** share one animation helper (`src/composables/useSmoothDetails.js`): 320ms height slide and fade, instant with reduced motion.
 - To check a section: paste its visible text (not the drop-down text) into [hemingwayapp.com](https://hemingwayapp.com).
 
 Scores on 19 Nov 2026 (visible text): hero 7, what GGS is 4, key features 6, who can apply 7.5, how it works 5, questions 3. Before the rewrite: 11, 12, 16.5, 14, 7, 8.5.
 
 ## Before go-live
 
-- [ ] Codi confirms the name **Funding Finder** and the domain (not yet checked on Companies House, the IPO trade mark register or the domain registries). Note the similarity to the partner brand "Finding Funding".
-- [ ] Fill every yellow `[[…]]` placeholder (footer company details, FCA line, fees and commission, privacy policy). Search for `class="ph"` and `[[`.
+- [x] Name: **Finding Funding** (changed from Funding Finder on 19 Nov 2026). Domain: finding-funding.co.uk, where to host it still to decide.
+- [ ] Toolkit page 10 requires the firm's registered name and address to be shown clearly. The footer no longer shows them. Companies House lists FINDING FUNDING LTD (12383309, Beverley); confirm that's the firm behind this page and add one line to the footer.
+- [ ] Fill the remaining yellow `[[…]]` placeholders (FAQ fees and commission answer, privacy policy). Search for `class="ph"` and `[[`.
 - [ ] Codi approves Lendpoint's success message for this page ("within one working day", "a realistic range", "lenders that fit") and that "Won't trigger a credit check" is true.
 - [ ] Codi approves the dotted/yellow-marked FAQ answers (refinancing purposes from toolkit p7, credit search).
 - [ ] Codi approves the plain-English versions of the scheme facts. The brief said to use the toolkit wording word for word; it's now in the "Official scheme info" drop-downs, with our plain summaries on show.

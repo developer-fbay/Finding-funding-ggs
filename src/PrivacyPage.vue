@@ -7,7 +7,7 @@ import SiteFooter from './components/SiteFooter.vue'
 <template>
   <header class="top">
     <div class="wrap bar">
-      <a href="./index.html" aria-label="Funding Finder home"><BrandLogo :size="20" /></a>
+      <a href="./index.html" aria-label="Finding Funding home"><BrandLogo :size="20" /></a>
       <a href="./index.html" class="back"><ArrowLeft :size="16" aria-hidden="true" />Back to the enquiry form</a>
     </div>
   </header>
@@ -16,7 +16,7 @@ import SiteFooter from './components/SiteFooter.vue'
     <p>Last updated: <mark class="ph">[[date]]</mark></p>
 
     <h2>Who we are</h2>
-    <p>This page is run by <mark class="ph">[[REGISTERED COMPANY NAME]]</mark>, trading as Funding Finder (company number <mark class="ph">[[00000000]]</mark>, registered address <mark class="ph">[[address]]</mark>), a commercial finance broker. <mark class="ph">[[If another firm handles enquiries, name it here and set out who is controller for what.]]</mark></p>
+    <p>This page is run by <mark class="ph">[[REGISTERED COMPANY NAME]]</mark>, trading as Finding Funding (company number <mark class="ph">[[00000000]]</mark>, registered address <mark class="ph">[[address]]</mark>), a commercial finance broker. <mark class="ph">[[If another firm handles enquiries, name it here and set out who is controller for what.]]</mark></p>
 
     <h2>What we collect</h2>
     <ul>
@@ -49,7 +49,7 @@ import SiteFooter from './components/SiteFooter.vue'
     <h2>Contact and complaints</h2>
     <p><mark class="ph">[[How to contact us about your data, and how to complain to the ICO.]]</mark></p>
   </main>
-  <SiteFooter />
+  <SiteFooter home="./index.html" />
 </template>
 
 <style scoped>

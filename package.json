@@ -1,9 +1,9 @@
 {
-  "name": "funding-finder-ggs",
+  "name": "finding-funding-ggs",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Funding Finder: Growth Guarantee Scheme (GGS) enquiry one-pager. Vue 3 + Vite, static build.",
+  "description": "Finding Funding: Growth Guarantee Scheme (GGS) enquiry one-pager. Vue 3 + Vite, static build.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

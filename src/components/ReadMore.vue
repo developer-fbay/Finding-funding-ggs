@@ -1,10 +1,11 @@
 <script setup>
 // Drop-down holding the British Business Bank's approved wording, word for word,
 // under the plain-English summary. Native <details>, so it still works without JS
-// and stays searchable (Ctrl+F) and indexable while closed. With JS, opening and
-// closing animate the height; reduced-motion users get an instant toggle.
+// and stays searchable (Ctrl+F) and indexable while closed. Opening and closing are
+// animated by the shared smoothDetails helper (same timing as the FAQ).
 import { ref } from 'vue'
 import { ChevronDown, X } from '@lucide/vue'
+import { vSmoothDetails } from '../composables/useSmoothDetails.js'
 
 const props = defineProps({
   label: { type: String, default: 'Official scheme info' },
@@ -13,66 +14,23 @@ const props = defineProps({
   list: { type: Array, default: () => [] }
 })
 
-const DURATION = 320
-const EASING = 'cubic-bezier(.22, .61, .36, 1)'
-
 const el = ref(null)
 const summary = ref(null)
-const body = ref(null)
-const expanded = ref(false)
-let anim = null
-
 const closeLabel = `Close ${props.label}${props.context ? ': ' + props.context : ''}`
-const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-function finish(open) {
-  const d = el.value
-  d.open = open
-  d.style.overflow = ''
-  anim = null
-}
-
-function animateTo(open) {
-  const d = el.value
-  expanded.value = open
-  if (reducedMotion() || typeof d.animate !== 'function') { if (anim) anim.cancel(); finish(open); return }
-  const start = d.offsetHeight // mid-animation this is the current animated height
-  if (anim) anim.cancel()
-  d.style.overflow = 'hidden'
-  if (open) d.open = true
-  const end = open ? d.scrollHeight : summary.value.offsetHeight
-  const a = d.animate({ height: [`${start}px`, `${end}px`] }, { duration: DURATION, easing: EASING })
-  anim = a
-  if (open) body.value.animate({ opacity: [0, 1], transform: ['translateY(-6px)', 'none'] }, { duration: DURATION, easing: EASING })
-  a.onfinish = () => { if (anim === a) finish(open) }
-  // Safety net: if the browser isn't painting frames (background tab), the finish event
-  // never fires, so settle the end state directly.
-  setTimeout(() => { if (anim === a) { a.cancel(); finish(open) } }, DURATION + 150)
-}
-
-function onSummaryClick(e) {
-  e.preventDefault()
-  animateTo(!expanded.value)
-}
 
 function close() {
-  animateTo(false)
+  el.value._smoothDetails.close()
   summary.value.focus()
-}
-
-// Keep state in step when the browser opens it natively (e.g. find-in-page).
-function onToggle() {
-  if (!anim) expanded.value = el.value.open
 }
 </script>
 
 <template>
-  <details ref="el" class="read-more" :class="{ expanded }" @toggle="onToggle">
-    <summary ref="summary" @click="onSummaryClick">
+  <details ref="el" v-smooth-details class="read-more">
+    <summary ref="summary">
       <span>{{ label }}<span v-if="context" class="visually-hidden">: {{ context }}</span></span>
       <ChevronDown :size="20" :stroke-width="2" class="chev" aria-hidden="true" />
     </summary>
-    <div ref="body" class="body">
+    <div class="body">
       <button type="button" class="close" :aria-label="closeLabel" @click="close">
         <X :size="20" :stroke-width="2" aria-hidden="true" />
       </button>

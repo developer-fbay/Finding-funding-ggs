@@ -54,7 +54,7 @@ function toggleVideo() {
 
     <div class="wrap inner">
       <header class="header">
-        <a href="#top" aria-label="Funding Finder, back to top"><BrandLogo :size="22" /></a>
+        <a href="#top" aria-label="Finding Funding, back to top"><BrandLogo :size="22" /></a>
         <a href="#enquire" class="btn btn-small">Request a callback <ArrowRight :size="16" :stroke-width="2" aria-hidden="true" /></a>
       </header>
 
