@@ -118,7 +118,7 @@ async function onSubmit() {
         <CircleAlert :size="18" class="icon" aria-hidden="true" />{{ MESSAGES.send }}
       </p>
 
-      <p class="privacy">We use your details to handle your enquiry. See our <a href="./privacy.html" target="_blank" rel="noopener">privacy policy</a>.</p>
+      <p class="privacy">We use your details to handle your enquiry.</p>
     </form>
   </div>
 </template>

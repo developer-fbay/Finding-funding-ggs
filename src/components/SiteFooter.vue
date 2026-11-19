@@ -38,7 +38,6 @@ function cookieSettings(e) {
             <ul role="list">
               <li><a :href="to('#enquire')">Request a callback</a></li>
               <li><a :href="to('#questions')">Questions</a></li>
-              <li><a href="./privacy.html">Privacy policy</a></li>
               <li v-if="SITE.cookieYesId"><a href="#" @click="cookieSettings">Cookie settings</a></li>
             </ul>
           </div>
