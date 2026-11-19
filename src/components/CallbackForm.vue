@@ -158,7 +158,36 @@ form { display: flex; flex-direction: column; gap: 14px; }
 .select select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 42px; }
 .select.empty select { color: #a1a1aa; }
 .select select option { color: var(--ink); }
-.chev { position: absolute; right: 14px; top: 20px; color: var(--zinc-500); pointer-events: none; }
+.chev { position: absolute; right: 14px; top: 20px; color: var(--zinc-500); pointer-events: none; transition: rotate .18s ease; }
+
+/* The open list. Where the browser supports customisable selects (Chrome and Edge), it gets
+   the site's styling; elsewhere the browser's standard list shows. Still a native <select>,
+   so keyboard, screen reader and autofill behaviour don't change. */
+@supports (appearance: base-select) {
+  .select select, .select select::picker(select) { appearance: base-select; }
+  .select select::picker-icon { display: none; }
+  .select:has(select:open) .chev { rotate: 180deg; }
+  .select select::picker(select) {
+    border: 0; border-radius: var(--r-sm); padding: 6px; margin-block: 6px;
+    background: #fff; color: var(--ink); font: inherit;
+    box-shadow: 0 0 0 1px rgba(10, 13, 20, .08), 0 18px 40px -12px rgba(10, 13, 20, .35);
+    opacity: 0; translate: 0 -6px;
+    transition: opacity .18s ease, translate .18s ease, overlay .18s allow-discrete, display .18s allow-discrete;
+  }
+  .select select:open::picker(select) { opacity: 1; translate: 0 0; }
+  @starting-style { .select select:open::picker(select) { opacity: 0; translate: 0 -6px; } }
+  .select option {
+    display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px 12px; border-radius: 10px;
+    font-size: .9375rem; line-height: 1.35; color: var(--ink); cursor: pointer;
+  }
+  .select option:disabled { display: none; }
+  .select option:checked { background: var(--coral-tint); font-weight: 600; }
+  .select option:hover { background: #ffe3d8; }
+  .select option:focus-visible { outline: none; background: #ffe3d8; box-shadow: inset 0 0 0 2px var(--coral); }
+  .select option::checkmark { order: 1; margin-left: auto; color: var(--coral-deep); }
+  @media (prefers-reduced-motion: reduce) { .select select::picker(select) { transition: none; } }
+}
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
 .field.invalid { background: var(--danger-tint); box-shadow: inset 0 0 0 2px var(--danger-ring); }
 .field.invalid label { color: var(--danger); }
 .field.invalid .chev, .field.invalid .prefix { color: var(--danger); }
