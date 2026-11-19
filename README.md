@@ -120,6 +120,7 @@ Scores on 19 Nov 2026 (visible text): hero 7, what GGS is 4, key features 6, who
 - [ ] Codi approves the FAQ answers on refinancing (from toolkit p7, not the approved wording) and on credit searches.
 - [ ] Codi approves the plain-English versions of the scheme facts. The brief said to use the toolkit wording word for word; it's now in the "Official scheme info" drop-downs, with our plain summaries on show.
 - [ ] Remove `<meta name="robots" content="noindex, nofollow">` from both HTML files.
+- [ ] Change `og:url` and `og:image` in both HTML files from `finding-funding-ggs.pages.dev` to the live domain. The link preview image is `public/og-image.png` (1200×630, the favicon mark on ink).
 - [ ] Set `.env` (webhook, GTM, hosts, CookieYes), rebuild, deploy `dist/`.
 - [ ] Test: UTM and gclid links reach the CRM; GA4 event and Google Ads conversion fire once in GTM Preview; nothing fires after rejecting cookies.
 - [ ] Lighthouse on mobile.
