@@ -16,28 +16,29 @@ import { Plus, Minus, ArrowRight } from '@lucide/vue'
         <details open>
           <summary>Is this a government loan?<span class="toggle" aria-hidden="true"><Plus :size="18" class="plus" /><Minus :size="18" class="minus" /></span></summary>
           <div class="a">
-            <p>No. The finance comes from an Accredited Lender, and the government guarantee is given to that lender, not to your business.</p>
-            <p>The Scheme provides the Accredited Lender with a 70% government backed guarantee against the outstanding balance of the facility after it has completed its normal recovery process. The borrower always remains 100% liable for the debt.</p>
+            <p>No. The money comes from an Accredited Lender. The government guarantee is for the lender, not your business.</p>
+            <p>It covers 70% of what’s still owed, after the lender has tried to recover it. You still owe 100% of the debt.</p>
           </div>
         </details>
         <details>
           <summary>Am I personally liable?<span class="toggle" aria-hidden="true"><Plus :size="18" class="plus" /><Minus :size="18" class="minus" /></span></summary>
           <div class="a">
-            <p>The borrower always remains 100% liable for the debt.</p>
-            <p>Personal guarantees can be taken at the GGS Accredited Lenders’ discretion, in line with their normal commercial lending practices. Taking security over Principal Private Residences is strictly prohibited within the Scheme though.</p>
+            <p>The borrower always owes 100% of the debt.</p>
+            <p>A lender may also ask for a personal guarantee, as it would for any business loan. It can’t take your main home as security.</p>
           </div>
         </details>
         <details>
           <summary>Can I use it to refinance?<span class="toggle" aria-hidden="true"><Plus :size="18" class="plus" /><Minus :size="18" class="minus" /></span></summary>
           <div class="a">
-            <p><mark class="ph" title="Toolkit page 7 (eligibility checklist), not the approved wording on pages 11–12. Codi to OK.">The eligible purposes are working capital, investment and growth, and refinancing existing debt or debt consolidation.</mark></p>
-            <p>If you’re thinking about refinancing, we’ll talk it through with you to check it’s the right move for your business before anything goes to a lender.</p>
+            <p><mark class="ph" title="Toolkit page 7 (eligibility checklist), not the approved wording on pages 11–12. Codi to OK.">Yes. You can use it to refinance or consolidate debt. You can also use it for working capital, or to invest and grow.</mark></p>
+            <p>Thinking about refinancing? We’ll talk it through first, to check it’s right for your business.</p>
           </div>
         </details>
         <details>
           <summary>I had a Bounce Back Loan or CBILS. Can I still apply?<span class="toggle" aria-hidden="true"><Plus :size="18" class="plus" /><Minus :size="18" class="minus" /></span></summary>
           <div class="a">
-            <p>Businesses that took out a Coronavirus Business Interruption Loan Scheme (CBILS), Coronavirus Large Business Interruption Loan Scheme (CLBILS), Bounce Back Loan Scheme (BBLS) or a Recovery Loan Scheme (RLS) facility before 30 June 2022 are not prevented from accessing the Growth Guarantee Scheme, but borrowing under some of these Schemes may reduce the maximum amount the borrower is eligible for.</p>
+            <p>Yes, if you took it out before 30 June 2022. The same goes for CLBILS and Recovery Loans.</p>
+            <p>But some of that borrowing may lower the most you can borrow under GGS.</p>
           </div>
         </details>
         <details>
@@ -50,7 +51,7 @@ import { Plus, Minus, ArrowRight } from '@lucide/vue'
           <summary>Do you charge a fee or earn commission?<span class="toggle" aria-hidden="true"><Plus :size="18" class="plus" /><Minus :size="18" class="minus" /></span></summary>
           <div class="a">
             <p><mark class="ph">[[CODI: do we charge the client anything? Wording for the commission lenders pay us.]]</mark></p>
-            <p>If a lender pays us commission, you’ll be told about it before you agree to anything, including how it may affect the total cost of credit.</p>
+            <p>If a lender pays us commission, we’ll tell you before you agree to anything. That includes how it may affect the total cost.</p>
           </div>
         </details>
       </div>

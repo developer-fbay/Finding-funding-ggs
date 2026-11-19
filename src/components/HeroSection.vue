@@ -25,7 +25,7 @@ onMounted(() => {
 })
 const usps = [
   { icon: PoundSterling, big: 'Up to £2m', small: 'per business group' },
-  { icon: Layers, big: '5', small: 'types of facility' },
+  { icon: Layers, big: '5', small: 'types of finance' },
   { icon: CircleCheck, big: 'No', small: 'obligation to apply' }
 ]
 
@@ -65,7 +65,7 @@ function toggleVideo() {
             Growth Guarantee Scheme · Broker enquiries
           </p>
           <h1>Find your route to <span>Growth Guarantee Scheme</span> finance</h1>
-          <p class="lead">The Growth Guarantee Scheme (GGS) aims to provide greater certainty over credit risk, enabling lenders to provide finance to more viable smaller businesses that they wouldn’t otherwise consider.</p>
+          <p class="lead">The Growth Guarantee Scheme (GGS) helps smaller UK businesses get finance. We check if it could fit you, then introduce you to a lender.</p>
           <ul class="usps" role="list">
             <li v-for="u in usps" :key="u.big" class="usp">
               <component :is="u.icon" :size="26" class="icon icon-dark" aria-hidden="true" />

@@ -3,12 +3,18 @@ import { PoundSterling, Layers, CalendarRange, History, Percent, UserRound, Buil
 import cityJpg from '../assets/city-underground-1200.jpg'
 import cityWebp1200 from '../assets/city-underground-1200.webp'
 import cityWebp800 from '../assets/city-underground-800.webp'
+import ReadMore from './ReadMore.vue'
 
+// Plain-English text is shown; the toolkit's approved wording (p11–12) sits word for word in "official".
 const weigh = [
-  { icon: Percent, title: 'Pricing', text: 'Interest rates and fees charged by Accredited Lenders will vary and will depend on the specific lending proposal. The Accredited Lender’s pricing will take into account the benefit of the Government guarantee and a fee that is charged to the Accredited Lender for the guarantee.' },
-  { icon: UserRound, title: 'Personal Guarantees', text: 'Personal guarantees can be taken at the GGS Accredited Lenders’ discretion, in line with their normal commercial lending practices. Taking security over Principal Private Residences is strictly prohibited within the Scheme though.' },
-  { icon: Building2, title: 'Guarantee is to the Accredited lender', text: 'The Scheme provides the Accredited Lender with a 70% government backed guarantee against the outstanding balance of the facility after it has completed its normal recovery process. The borrower always remains 100% liable for the debt.' },
-  { icon: Scale, title: 'Decision making delegated to the GGS Accredited Lenders', text: 'Growth Guarantee Scheme-backed facilities are provided at the discretion of the Accredited Lender. GGS accredited lenders are required to undertake standard credit and fraud checks for all applicants.' }
+  { icon: Percent, title: 'Interest and fees', text: 'Lenders set their own interest and fees, based on your deal. Their price takes account of the guarantee, and the fee they pay for it.',
+    official: ['Interest rates and fees charged by Accredited Lenders will vary and will depend on the specific lending proposal. The Accredited Lender’s pricing will take into account the benefit of the Government guarantee and a fee that is charged to the Accredited Lender for the guarantee.'] },
+  { icon: UserRound, title: 'Personal guarantees', text: 'A lender may ask for a personal guarantee, as it would for any business loan. It can’t take your main home as security.',
+    official: ['Personal guarantees can be taken at the GGS Accredited Lenders’ discretion, in line with their normal commercial lending practices.', 'Taking security over Principal Private Residences is strictly prohibited within the Scheme though.'] },
+  { icon: Building2, title: 'The guarantee is for the lender', text: 'The government gives the lender a 70% guarantee on what’s still owed, after the lender has tried to recover it. You still owe 100% of the debt.',
+    official: ['The Scheme provides the Accredited Lender with a 70% government backed guarantee against the outstanding balance of the facility after it has completed its normal recovery process. The borrower always remains 100% liable for the debt.'] },
+  { icon: Scale, title: 'The lender decides', text: 'Lenders decide who they lend to. They run their usual credit and fraud checks on everyone who applies.',
+    official: ['Growth Guarantee Scheme-backed facilities are provided at the discretion of the Accredited Lender. GGS accredited lenders are required to undertake standard credit and fraud checks for all applicants.'] }
 ]
 </script>
 
@@ -17,7 +23,7 @@ const weigh = [
     <div class="wrap">
       <div class="section-head">
         <div><h2 id="features-title" class="h2">Key features</h2></div>
-        <p class="source">Scheme details: British Business Bank approved wording.</p>
+        <p class="source">Each point is in plain English. The official scheme wording is just below it.</p>
       </div>
 
       <div class="bento">
@@ -30,24 +36,32 @@ const weigh = [
           <div class="photo-body">
             <PoundSterling :size="28" class="icon icon-dark" aria-hidden="true" />
             <h3>Up to £2m per business group</h3>
-            <p>The maximum amount for a facility provided under the scheme is generally £2m per business group for borrowers outside the scope of the Northern Ireland Protocol, and up to £1m in accordance with the relevant legal agreement(s) per business group for Northern Ireland Protocol borrowers. Minimum facility sizes vary, starting at £1,000 for asset finance, invoice finance and asset-based lending, and £25,001 for term loans and overdrafts.</p>
+            <p>Most businesses can borrow up to £2m. If the Northern Ireland Protocol applies to you, the limit is £1m.</p>
+            <p>The smallest amount depends on the product. It starts at £1,000 for asset finance, invoice finance and asset-based lending. For term loans and overdrafts, it starts at £25,001.</p>
+            <ReadMore context="Up to £2m per business group" :paras="['The maximum amount for a facility provided under the scheme is generally £2m per business group for borrowers outside the scope of the Northern Ireland Protocol, and up to £1m in accordance with the relevant legal agreement(s) per business group for Northern Ireland Protocol borrowers. Minimum facility sizes vary, starting at £1,000 for asset finance, invoice finance and asset-based lending, and £25,001 for term loans and overdrafts.']" />
           </div>
         </article>
         <article class="card tile">
           <Layers :size="28" class="icon icon-light" aria-hidden="true" />
-          <h3>Wide range of products</h3>
-          <p>The Growth Guarantee Scheme supports term loans, overdrafts, asset finance, invoice finance, and asset-based lending facilities.</p>
-          <p class="small">Not all Accredited lenders will be able to offer all products.</p>
+          <h3>Five types of finance</h3>
+          <ul class="ticks" role="list">
+            <li>Term loans</li><li>Overdrafts</li><li>Asset finance</li><li>Invoice finance</li><li>Asset-based lending</li>
+          </ul>
+          <p class="small">Not every lender offers all five.</p>
         </article>
         <article class="card tile">
           <CalendarRange :size="28" class="icon icon-light" aria-hidden="true" />
-          <h3>Term length</h3>
-          <p>Term loans and asset finance facilities are available from three months up to six years, with overdrafts, invoice finance and asset-based lending available from three months up to three years.</p>
+          <h3>How long for</h3>
+          <dl class="terms">
+            <div><dt>Term loans and asset finance</dt><dd>3 months to 6 years</dd></div>
+            <div><dt>Overdrafts, invoice finance and asset-based lending</dt><dd>3 months to 3 years</dd></div>
+          </dl>
         </article>
         <article class="tile tint wide">
           <History :size="28" class="icon icon-light" aria-hidden="true" />
-          <h3>Access to multiple schemes</h3>
-          <p>Businesses that took out a Coronavirus Business Interruption Loan Scheme (CBILS), Coronavirus Large Business Interruption Loan Scheme (CLBILS), Bounce Back Loan Scheme (BBLS) or a Recovery Loan Scheme (RLS) facility before 30 June 2022 are not prevented from accessing the Growth Guarantee Scheme, but borrowing under some of these Schemes may reduce the maximum amount the borrower is eligible for.</p>
+          <h3>Had a loan from an earlier scheme?</h3>
+          <p>A CBILS, CLBILS, Bounce Back or Recovery Loan taken out before 30 June 2022 doesn’t stop you applying. But it may lower the most you can borrow.</p>
+          <ReadMore context="Earlier schemes" :paras="['Businesses that took out a Coronavirus Business Interruption Loan Scheme (CBILS), Coronavirus Large Business Interruption Loan Scheme (CLBILS), Bounce Back Loan Scheme (BBLS) or a Recovery Loan Scheme (RLS) facility before 30 June 2022 are not prevented from accessing the Growth Guarantee Scheme, but borrowing under some of these Schemes may reduce the maximum amount the borrower is eligible for.']" />
         </article>
       </div>
 
@@ -58,6 +72,7 @@ const weigh = [
             <component :is="w.icon" :size="28" class="icon icon-dark" aria-hidden="true" />
             <p class="wt">{{ w.title }}</p>
             <p class="wb">{{ w.text }}</p>
+            <ReadMore :context="w.title" :paras="w.official" />
           </div>
         </div>
       </div>
@@ -74,7 +89,12 @@ const weigh = [
 .tile { display: flex; flex-direction: column; gap: 12px; padding: 28px; border-radius: var(--r-lg); }
 .tile h3, .photo h3 { font-size: 1.375rem; letter-spacing: -0.02em; line-height: 1.2; margin-top: 4px; }
 .tile p { font-size: .9375rem; color: var(--zinc-700); }
-.tile .small { font-size: .875rem; color: var(--zinc-500); }
+.tile .small { font-size: .875rem; color: var(--zinc-600); }
+.ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ticks li { padding: 6px 12px; border-radius: 10px; background: var(--zinc-100); font-size: .9375rem; font-weight: 500; }
+.terms { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.terms dt { font-size: .9375rem; color: var(--zinc-700); }
+.terms dd { margin: 2px 0 0; font-family: var(--font-head); font-size: 1.375rem; font-weight: 600; letter-spacing: -0.02em; }
 .tint { background: var(--coral-tint); }
 .photo { position: relative; overflow: hidden; min-height: 460px; border-radius: var(--r-lg); background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; }
 .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -103,5 +123,5 @@ const weigh = [
 .weigh-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .weigh-card { border-radius: var(--r-md); border: 1px solid rgba(255,255,255,.14); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
 .wt { font-weight: 600; margin-top: 4px; }
-.wb { font-size: .875rem; color: var(--on-dark); }
+.wb { font-size: .9375rem; color: var(--on-dark); }
 </style>

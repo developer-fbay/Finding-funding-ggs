@@ -6,9 +6,9 @@ import towerWebp960 from '../assets/city-tower-960.webp'
 
 const steps = [
   { icon: Send, title: 'You enquire', text: 'Request a callback. It takes about a minute and needs no documents.' },
-  { icon: Phone, title: 'We call to check it fits', text: 'We ask a few questions to check GGS is likely to suit your business before anything goes to a lender. If another type of finance would suit you better, we’ll say so.' },
-  { icon: Handshake, title: 'We introduce you to an Accredited Lender', text: 'One that offers the product you need.' },
-  { icon: Scale, title: 'The lender decides', text: 'Decision-making on whether a business is eligible for the Growth Guarantee Scheme is fully delegated to accredited lenders by the British Business Bank.', hl: true }
+  { icon: Phone, title: 'We call to check it fits', text: 'We ask a few questions to check GGS could suit you. If another type of finance would suit you better, we’ll say so.' },
+  { icon: Handshake, title: 'We introduce you to an Accredited Lender', text: 'One that offers the type of finance you need.' },
+  { icon: Scale, title: 'The lender decides', text: 'Only the lender decides if your business is eligible. The British Business Bank leaves that decision fully to them.', hl: true }
 ]
 const docs = ['Management accounts', 'Business plan', 'Historic accounts', 'Details of assets', 'Details of previous subsidy awards']
 </script>
