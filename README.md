@@ -101,7 +101,7 @@ Unused older files you can delete: `src/assets/hero-city.jpg`, `city-underground
 
 The aim is an easy read: short sentences, everyday words, all the vital facts. Target **Hemingway grade 9 or lower** for everything visible (Hemingway's grade is the Automated Readability Index).
 
-- **Plain English on show, official wording one click away.** Each scheme fact is written in plain English. The British Business Bank's approved wording (toolkit pages 11–12) sits word for word underneath in an **"Official scheme wording"** drop-down (`src/components/ReadMore.vue`, a native `<details>`, so it works without JavaScript and stays searchable).
+- **Plain English on show, official wording one click away.** Each scheme fact is written in plain English. The British Business Bank's approved wording (toolkit pages 11–12) sits word for word underneath in an **"Official scheme info"** drop-down (`src/components/ReadMore.vue`, a native `<details>`, so it works without JavaScript and stays searchable). It opens and closes with a 320ms height animation (instant for reduced-motion users) and has an X button to close it.
 - **Risk points stay visible, never only in a drop-down:** you still owe 100%, interest and fees vary, personal guarantees may be taken, the lender decides (toolkit page 10).
 - **Footer legal text** is the toolkit's legal notice (page 13), kept word for word, so it scores higher. That's expected.
 - To check a section: paste its visible text (not the drop-down text) into [hemingwayapp.com](https://hemingwayapp.com).
@@ -114,7 +114,7 @@ Scores on 19 Nov 2026 (visible text): hero 7, what GGS is 4, key features 6, who
 - [ ] Fill every yellow `[[…]]` placeholder (footer company details, FCA line, fees and commission, privacy policy). Search for `class="ph"` and `[[`.
 - [ ] Codi approves Lendpoint's success message for this page ("within one working day", "a realistic range", "lenders that fit") and that "Won't trigger a credit check" is true.
 - [ ] Codi approves the dotted/yellow-marked FAQ answers (refinancing purposes from toolkit p7, credit search).
-- [ ] Codi approves the plain-English versions of the scheme facts. The brief said to use the toolkit wording word for word; it's now in the "Official scheme wording" drop-downs, with our plain summaries on show.
+- [ ] Codi approves the plain-English versions of the scheme facts. The brief said to use the toolkit wording word for word; it's now in the "Official scheme info" drop-downs, with our plain summaries on show.
 - [ ] Remove `<meta name="robots" content="noindex, nofollow">` from both HTML files.
 - [ ] Set `.env` (webhook, GTM, hosts, CookieYes), rebuild, deploy `dist/`.
 - [ ] Test: UTM and gclid links reach the CRM; GA4 event and Google Ads conversion fire once in GTM Preview; nothing fires after rejecting cookies.

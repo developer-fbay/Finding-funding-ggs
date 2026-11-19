@@ -23,7 +23,7 @@ const weigh = [
     <div class="wrap">
       <div class="section-head">
         <div><h2 id="features-title" class="h2">Key features</h2></div>
-        <p class="source">Each point is in plain English. The official scheme wording is just below it.</p>
+        <p class="source">Each point is in plain English. Open “Official scheme info” for the exact wording.</p>
       </div>
 
       <div class="bento">
@@ -33,7 +33,7 @@ const weigh = [
             <img :src="cityJpg" alt="London Underground sign on a stone building in the City of London" loading="lazy" decoding="async" width="1200" height="800">
           </picture>
           <div class="fade" aria-hidden="true"></div>
-          <div class="photo-body">
+          <div class="photo-body glass">
             <PoundSterling :size="28" class="icon icon-dark" aria-hidden="true" />
             <h3>Up to £2m per business group</h3>
             <p>Most businesses can borrow up to £2m. If the Northern Ireland Protocol applies to you, the limit is £1m.</p>
@@ -98,18 +98,14 @@ const weigh = [
 .tint { background: var(--coral-tint); }
 .photo { position: relative; overflow: hidden; min-height: 460px; border-radius: var(--r-lg); background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; }
 .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,13,20,0) 0%, rgba(10,13,20,.25) 40%, rgba(10,13,20,.6) 100%); }
+/* Same scrim as the "How it works" photo, so the shared .glass panel reads the same way. */
+.fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,13,20,.78) 0%, rgba(10,13,20,.55) 50%, rgba(10,13,20,.82) 100%); }
+/* Glass look comes from the global .glass class (same as the "How it works" cards). */
 .photo-body {
   position: relative; margin: 12px; padding: 22px; border-radius: var(--r-md);
   display: flex; flex-direction: column; gap: 10px;
-  /* Frosted glass: the photo shows through, blurred. Light sheen on top; the .6 dark tint keeps
-     white text at 5:1 or better over the brightest part of this photo (checked at phone, tablet, desktop). */
-  background: linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%), rgba(10,13,20,.6);
-  border: 1px solid rgba(255,255,255,.22);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 8px 32px rgba(10,13,20,.25);
-  -webkit-backdrop-filter: blur(22px) saturate(160%); backdrop-filter: blur(22px) saturate(160%);
 }
-/* No blur support: fall back to the solid dark panel so the text stays readable. */
+/* No blur support: fall back to a solid dark panel so the text stays readable. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .photo-body { background: rgba(10,13,20,.86); }
 }
