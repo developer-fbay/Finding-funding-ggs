@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { ArrowRight, PoundSterling, Layers, CircleCheck } from '@lucide/vue'
+import { ArrowRight, Pause, Play, PoundSterling, Layers, CircleCheck } from '@lucide/vue'
 import BrandLogo from './BrandLogo.vue'
 import CallbackForm from './CallbackForm.vue'
 import heroJpg from '../assets/hero-city-1920.jpg'
@@ -10,10 +10,11 @@ import heroMp4 from '../assets/hero-city.mp4'
 import heroWebm from '../assets/hero-city.webm'
 import { SITE } from '../config.js'
 
-// Muted background video (Pexels stock), autoplaying on a loop with no controls.
-// WebM (VP9) first, MP4 (H.264) fallback. Skipped for reduced motion, data-saver and
-// small screens; the poster still shows instead.
+// Muted background video (Pexels stock). WebM (VP9) first, MP4 (H.264) fallback.
+// Skipped for reduced motion, data-saver and small screens; the poster still shows instead.
+const video = ref(null)
 const useVideo = ref(false)
+const playing = ref(true)
 const customVideo = SITE.heroVideo && SITE.heroVideo !== 'off' ? SITE.heroVideo : ''
 const videoOn = SITE.heroVideo !== 'off'
 onMounted(() => {
@@ -28,11 +29,17 @@ const usps = [
   { icon: CircleCheck, big: 'No', small: 'obligation to apply' }
 ]
 
+function toggleVideo() {
+  if (!video.value) return
+  if (video.value.paused) { video.value.play(); playing.value = true } else { video.value.pause(); playing.value = false }
+}
+
+
 </script>
 
 <template>
   <section id="top" class="hero">
-    <video v-if="useVideo" class="media" :poster="heroWebp1920" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <video v-if="useVideo" ref="video" class="media" :poster="heroWebp1920" autoplay muted loop playsinline preload="auto" aria-hidden="true">
       <source v-if="customVideo" :src="customVideo">
       <template v-else>
         <source :src="heroWebm" type="video/webm">
@@ -72,6 +79,10 @@ const usps = [
         </div>
       </div>
     </div>
+
+    <button v-if="useVideo" type="button" class="pause" :aria-label="playing ? 'Pause background video' : 'Play background video'" @click="toggleVideo">
+      <Pause v-if="playing" :size="16" aria-hidden="true" /><Play v-else :size="16" aria-hidden="true" />
+    </button>
   </section>
 </template>
 
@@ -108,4 +119,9 @@ h1 span { color: var(--coral); }
 .usp small { font-size: .8125rem; color: var(--on-dark); }
 
 .form-col { display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 16px; }
+.pause {
+  position: absolute; right: 24px; bottom: 20px; width: 44px; height: 44px; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.3); background: rgba(10,13,20,.5); color: #fff;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
 </style>
