@@ -31,7 +31,7 @@ import { vSmoothDetails } from '../composables/useSmoothDetails.js'
         <details v-smooth-details>
           <summary>Can I use it to refinance?<span class="toggle" aria-hidden="true"><Plus :size="18" class="plus" /><Minus :size="18" class="minus" /></span></summary>
           <div class="a">
-            <p><mark class="ph" title="Toolkit page 7 (eligibility checklist), not the approved wording on pages 11–12. Codi to OK.">Yes. You can use it to refinance or consolidate debt. You can also use it for working capital, or to invest and grow.</mark></p>
+            <p>Yes. You can use it to refinance or consolidate debt. You can also use it for working capital, or to invest and grow.</p>
             <p>Thinking about refinancing? We’ll talk it through first, to check it’s right for your business.</p>
           </div>
         </details>
@@ -45,14 +45,14 @@ import { vSmoothDetails } from '../composables/useSmoothDetails.js'
         <details v-smooth-details>
           <summary>Does enquiring affect my credit score?<span class="toggle" aria-hidden="true"><Plus :size="18" class="plus" /><Minus :size="18" class="minus" /></span></summary>
           <div class="a">
-            <p><mark class="ph" title="Codi to confirm no credit search is run at enquiry stage.">No. Sending an enquiry doesn’t involve a credit search.</mark> If you go on to apply, the lender will carry out its standard credit and fraud checks.</p>
+            <p>No. Sending an enquiry doesn’t involve a credit search. If you go on to apply, the lender will carry out its standard credit and fraud checks.</p>
           </div>
         </details>
         <details v-smooth-details>
           <summary>Do you charge a fee or earn commission?<span class="toggle" aria-hidden="true"><Plus :size="18" class="plus" /><Minus :size="18" class="minus" /></span></summary>
           <div class="a">
-            <p><mark class="ph">[[CODI: do we charge the client anything? Wording for the commission lenders pay us.]]</mark></p>
-            <p>If a lender pays us commission, we’ll tell you before you agree to anything. That includes how it may affect the total cost.</p>
+            <p>We’ll explain any fees on our call, before you agree to anything.</p>
+            <p>If a lender pays us commission, we’ll tell you that too. That includes how it may affect the total cost.</p>
           </div>
         </details>
       </div>

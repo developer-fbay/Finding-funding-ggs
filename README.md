@@ -113,9 +113,11 @@ Scores on 19 Nov 2026 (visible text): hero 7, what GGS is 4, key features 6, who
 
 - [x] Name: **Finding Funding** (changed from Funding Finder on 19 Nov 2026). Domain: finding-funding.co.uk, where to host it still to decide.
 - [ ] Toolkit page 10 requires the firm's registered name and address to be shown clearly. The footer no longer shows them. Companies House lists FINDING FUNDING LTD (12383309, Beverley); confirm that's the firm behind this page and add one line to the footer.
-- [ ] Fill the remaining yellow `[[…]]` placeholders (FAQ fees and commission answer, privacy policy). Search for `class="ph"` and `[[`.
+- [x] Review copy cleaned (19 Nov 2026): all yellow `[[…]]` placeholders and "Codi to OK" highlights removed so the CEO can review the page as it would look live. The items below still need sign-off.
+- [ ] FAQ "Do you charge a fee or earn commission?": the answer now says we'll explain any fees on the call. Confirm whether clients pay a fee and add the commission wording.
+- [ ] Privacy policy: add the registered company name, number and address, a contact email for data requests, real retention periods, and the cookie list from CookieYes. Confirm the service providers listed (Cloudflare, n8n, Close, Slack) and who the data controller is if Funding Bay handles enquiries.
 - [ ] Codi approves Lendpoint's success message for this page ("within one working day", "a realistic range", "lenders that fit") and that "Won't trigger a credit check" is true.
-- [ ] Codi approves the dotted/yellow-marked FAQ answers (refinancing purposes from toolkit p7, credit search).
+- [ ] Codi approves the FAQ answers on refinancing (from toolkit p7, not the approved wording) and on credit searches.
 - [ ] Codi approves the plain-English versions of the scheme facts. The brief said to use the toolkit wording word for word; it's now in the "Official scheme info" drop-downs, with our plain summaries on show.
 - [ ] Remove `<meta name="robots" content="noindex, nofollow">` from both HTML files.
 - [ ] Set `.env` (webhook, GTM, hosts, CookieYes), rebuild, deploy `dist/`.

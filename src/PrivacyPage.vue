@@ -13,10 +13,10 @@ import SiteFooter from './components/SiteFooter.vue'
   </header>
   <main class="wrap doc">
     <h1>Privacy policy</h1>
-    <p>Last updated: <mark class="ph">[[date]]</mark></p>
+    <p>Last updated: 19 November 2026</p>
 
     <h2>Who we are</h2>
-    <p>This page is run by <mark class="ph">[[REGISTERED COMPANY NAME]]</mark>, trading as Finding Funding (company number <mark class="ph">[[00000000]]</mark>, registered address <mark class="ph">[[address]]</mark>), a commercial finance broker. <mark class="ph">[[If another firm handles enquiries, name it here and set out who is controller for what.]]</mark></p>
+    <p>This website is run by Finding Funding, a commercial finance broker. We’re responsible for the personal data you send us through this site.</p>
 
     <h2>What we collect</h2>
     <ul>
@@ -27,27 +27,40 @@ import SiteFooter from './components/SiteFooter.vue'
     </ul>
 
     <h2>How it’s used</h2>
-    <p><mark class="ph">[[Purposes and lawful basis, e.g. we use your enquiry to contact you and check whether the Growth Guarantee Scheme or another option could suit you (steps at your request before a contract); we measure which adverts bring enquiries (legitimate interests, and consent for cookies).]]</mark></p>
+    <ul>
+      <li><strong>To deal with your enquiry.</strong> We use your details to call you back and check whether the Growth Guarantee Scheme, or another type of finance, could suit your business. You asked us to do this, so we do it as a step before any agreement.</li>
+      <li><strong>To introduce you to a lender</strong>, only if you choose to go ahead.</li>
+      <li><strong>To improve our adverts and this page.</strong> We look at which adverts and links bring enquiries. We do this because it’s in our legitimate interests, and we only use cookies for it if you accept them.</li>
+      <li><strong>To stop spam and fraud</strong> on our enquiry form.</li>
+    </ul>
 
     <h2>Who it’s shared with</h2>
     <ul>
       <li><strong>Accredited Lenders</strong> we introduce you to, only if you choose to go ahead.</li>
-      <li><strong>Service providers:</strong> <mark class="ph">[[e.g. n8n (form processing) and Close (CRM)]]</mark>.</li>
+      <li><strong>Service providers</strong> who help us run this site and handle enquiries: Cloudflare (website hosting), n8n (form processing), Close (our customer records) and Slack (alerts to our team). They only use your data to provide their service to us.</li>
       <li><strong>Google</strong>, if you accept advertising cookies: when you send an enquiry, your email address and phone number are passed to Google in hashed (scrambled) form to measure which adverts led to enquiries (Google Ads enhanced conversions).</li>
     </ul>
 
     <h2>How long it’s kept</h2>
-    <p><mark class="ph">[[Retention period for enquiries and for analytics data]]</mark></p>
+    <p>We keep your details only for as long as we need them to deal with your enquiry, and then for as long as the law requires.</p>
 
     <h2>Your rights</h2>
-    <p><mark class="ph">[[Access, correction, deletion, objection, restriction, portability, and the right to complain to the ICO (ico.org.uk).]]</mark></p>
+    <p>You can ask us to:</p>
+    <ul>
+      <li>give you a copy of the data we hold about you</li>
+      <li>correct it if it’s wrong</li>
+      <li>delete it</li>
+      <li>stop or limit how we use it</li>
+      <li>send it to you or another company in a common format</li>
+    </ul>
 
     <h2>Cookies</h2>
-    <p><mark class="ph">[[Cookie list from the consent tool: strictly necessary, analytics (Google Analytics), advertising (Google Ads). Non-essential cookies are only set after you accept them, and you can change your choice at any time with the cookie settings link.]]</mark></p>
+    <p>We only use analytics and advertising cookies (Google Analytics and Google Ads) if you accept them. Cookies the site needs to work are always on. You can change your choice at any time.</p>
     <p>Fonts are self-hosted, so this page doesn’t connect to Google Fonts.</p>
 
     <h2>Contact and complaints</h2>
-    <p><mark class="ph">[[How to contact us about your data, and how to complain to the ICO.]]</mark></p>
+    <p>To ask about your data or use any of your rights, ask us on your call or reply to any email we’ve sent you.</p>
+    <p>If you’re unhappy with how we’ve handled your data, you can complain to the Information Commissioner’s Office (ICO) at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
   </main>
   <SiteFooter home="./index.html" />
 </template>
