@@ -23,7 +23,6 @@ const weigh = [
     <div class="wrap">
       <div class="section-head">
         <div><h2 id="features-title" class="h2">Key features</h2></div>
-        <p class="source">Each point is in plain English. Open “Official scheme info” for the exact wording.</p>
       </div>
 
       <div class="bento">
@@ -82,7 +81,6 @@ const weigh = [
 
 <style scoped>
 .features { padding-top: 0; }
-.source { font-size: .9375rem; color: var(--zinc-500); }
 .bento { display: grid; gap: 16px; grid-template-columns: 1fr; }
 @media (min-width: 760px) { .bento { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1100px) { .bento { grid-template-columns: repeat(3, 1fr); } .photo { grid-row: span 2; } .wide { grid-column: span 2; } }

@@ -2,7 +2,6 @@
 import { nextTick, ref } from 'vue'
 import { Clock, Phone, ShieldCheck, ArrowRight, ChevronDown, CircleAlert, CircleCheck } from '@lucide/vue'
 import { useLeadForm, PURPOSES, MESSAGES } from '../composables/useLeadForm.js'
-import { demoMode } from '../config.js'
 
 const { fields, errors, status, markStarted, check, recheck, tidyAmount, submit } = useLeadForm()
 
@@ -46,7 +45,6 @@ async function onSubmit() {
         <li><span class="num">2</span><span>They’ll call or email to confirm a couple of details and give you a realistic range.</span></li>
         <li><span class="num hl">3</span><span>If you want to go ahead, we introduce you to the lenders that fit. You deal with them directly and decide at your own pace.</span></li>
       </ol>
-      <p v-if="demoMode" class="demo-note">Demo mode: nothing was sent. Set VITE_WEBHOOK_URL to go live.</p>
     </div>
 
     <!-- Form -->
@@ -180,5 +178,4 @@ form { display: flex; flex-direction: column; gap: 14px; }
 .next-steps li { display: flex; gap: 12px; font-size: .9375rem; }
 .num { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: .875rem; }
 .num.hl { background: var(--coral); color: var(--ink); }
-.demo-note { font-size: .8125rem; color: var(--zinc-500); padding: 10px 12px; border-radius: 12px; background: var(--zinc-100); }
 </style>
