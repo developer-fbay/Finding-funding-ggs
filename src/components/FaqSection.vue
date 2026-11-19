@@ -72,9 +72,10 @@ summary {
   padding: 24px 0; font-family: var(--font-head); font-weight: 600; font-size: 1.25rem; letter-spacing: -0.015em; line-height: 1.3;
 }
 summary::-webkit-details-marker { display: none; }
-.toggle { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--zinc-100); color: var(--ink); display: flex; align-items: center; justify-content: center; transition: background-color .15s; }
+.toggle { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--coral-tint); color: var(--coral-deep); display: flex; align-items: center; justify-content: center; transition: background-color .15s, color .15s; }
+summary:hover .toggle { background: #ffe3d8; }
 .minus { display: none; }
-details.expanded .toggle { background: var(--ink); color: #fff; }
+details.expanded .toggle { background: #ffd4c4; color: var(--ink); }
 details.expanded .plus { display: none; }
 details.expanded .minus { display: block; }
 .a { padding: 0 56px 24px 0; display: flex; flex-direction: column; gap: 10px; color: var(--zinc-700); }
