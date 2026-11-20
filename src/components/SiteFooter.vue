@@ -14,7 +14,7 @@ const props = defineProps({
 const to = (href) => (href.startsWith('#') ? `${props.home}${href}` : href)
 const pageCol = props.ggs
   ? { title: 'The scheme', links: [['#about', 'What is GGS?'], ['#features', 'Key features'], ['#eligibility', 'Who can apply'], ['#how', 'How it works']] }
-  : { title: 'Business finance', links: [['#need', 'What it’s for'], ['#types', 'Types of finance'], ['#why', 'Why use a broker'], ['#how', 'How it works'], ['./growth-guarantee-scheme.html', 'Growth Guarantee Scheme']] }
+  : { title: 'Business finance', links: [['#need', 'What it’s for'], ['#types', 'Types of finance'], ['#why', 'Why use a broker'], ['#how', 'How it works']] }
 const otherPage = props.ggs ? ['./index.html', 'All business finance'] : null
 const blurb = props.ggs ? 'Growth Guarantee Scheme finance for smaller UK businesses.' : 'Business loans and finance for UK businesses.'
 
