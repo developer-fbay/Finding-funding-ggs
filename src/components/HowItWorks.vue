@@ -4,13 +4,23 @@ import towerJpg from '../assets/city-tower-1920.jpg'
 import towerWebp1920 from '../assets/city-tower-1920.webp'
 import towerWebp960 from '../assets/city-tower-960.webp'
 
-const steps = [
+// Text comes from props so other landing pages can reuse this section. Defaults are the GGS page.
+// A step can set `label` (e.g. 'Minute 1') to replace its 01–04 number.
+const defaultSteps = [
   { icon: Send, title: 'You enquire', text: 'Request a callback. It takes about a minute and needs no documents.' },
   { icon: Phone, title: 'We call to check it fits', text: 'We ask a few questions to check GGS could suit you. If another type of finance would suit you better, we’ll say so.' },
   { icon: Handshake, title: 'We introduce you to an Accredited Lender', text: 'One that offers the type of finance you need.' },
   { icon: Scale, title: 'The lender decides', text: 'Only the lender decides if your business is eligible. The British Business Bank leaves that decision fully to them.', hl: true }
 ]
-const docs = ['Management accounts', 'Business plan', 'Historic accounts', 'Details of assets', 'Details of previous subsidy awards']
+const defaultDocs = ['Management accounts', 'Business plan', 'Historic accounts', 'Details of assets', 'Details of previous subsidy awards']
+const props = defineProps({
+  intro: { type: String, default: 'Four steps from enquiry to a lender’s decision. Nothing goes to a lender until we’ve spoken.' },
+  steps: { type: Array, default: null },
+  docsTitle: { type: String, default: 'When you apply, the lender is likely to ask for:' },
+  docs: { type: Array, default: null }
+})
+const steps = props.steps || defaultSteps
+const docs = props.docs || defaultDocs
 </script>
 
 <template>
@@ -23,7 +33,7 @@ const docs = ['Management accounts', 'Business plan', 'Historic accounts', 'Deta
     <div class="wrap inner">
       <div class="section-head">
         <div><h2 id="how-title" class="h2">How it works</h2></div>
-        <p>Four steps from enquiry to a lender’s decision. Nothing goes to a lender until we’ve spoken.</p>
+        <p>{{ intro }}</p>
       </div>
 
       <div class="track">
@@ -31,7 +41,7 @@ const docs = ['Management accounts', 'Business plan', 'Historic accounts', 'Deta
         <ol class="steps" role="list">
           <li v-for="(s, i) in steps" :key="s.title" class="step" :class="s.hl ? 'hl' : 'glass'">
             <div class="step-top">
-              <span class="num">0{{ i + 1 }}</span>
+              <span class="num">{{ s.label || '0' + (i + 1) }}</span>
               <component :is="s.icon" :size="24" class="icon" aria-hidden="true" />
             </div>
             <h3>{{ s.title }}</h3>
@@ -41,7 +51,7 @@ const docs = ['Management accounts', 'Business plan', 'Historic accounts', 'Deta
       </div>
 
       <div class="docs glass">
-        <p>When you apply, the lender is likely to ask for:</p>
+        <p>{{ docsTitle }}</p>
         <ul role="list">
           <li v-for="d in docs" :key="d"><FileText :size="15" class="icon icon-dark" aria-hidden="true" />{{ d }}</li>
         </ul>
@@ -66,7 +76,7 @@ const docs = ['Management accounts', 'Business plan', 'Historic accounts', 'Deta
 @media (min-width: 1100px) { .steps { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
 .step { border-radius: var(--r-md); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
 .step-top { display: flex; justify-content: space-between; align-items: center; }
-.num { width: 44px; height: 44px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 700; font-size: 1.0625rem; background: var(--coral); color: var(--ink); }
+.num { min-width: 44px; padding: 0 10px; height: 44px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 700; font-size: 1.0625rem; background: var(--coral); color: var(--ink); }
 .step .icon { color: var(--coral); }
 .step h3 { font-size: 1.3125rem; line-height: 1.2; letter-spacing: -0.02em; margin-top: 8px; }
 .step p { font-size: .9375rem; color: #e4e4e7; }

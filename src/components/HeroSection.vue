@@ -21,11 +21,21 @@ onMounted(() => {
   const wide = window.matchMedia('(min-width: 768px)').matches
   useVideo.value = videoOn && !reduce && !saveData && wide
 })
-const usps = [
+// Text comes from props so other landing pages can reuse this hero. Defaults are the GGS page.
+const props = defineProps({
+  kicker: { type: String, default: 'Growth Guarantee Scheme · Broker enquiries' },
+  titleBefore: { type: String, default: 'Find your route to ' },
+  titleAccent: { type: String, default: 'Growth Guarantee Scheme' },
+  titleAfter: { type: String, default: ' finance' },
+  lead: { type: String, default: 'The Growth Guarantee Scheme (GGS) helps smaller UK businesses get finance. We check if it could fit you, then introduce you to a lender.' },
+  usps: { type: Array, default: null }
+})
+const defaultUsps = [
   { icon: PoundSterling, big: 'Up to £2m', small: 'per business group' },
   { icon: Layers, big: '5', small: 'types of finance' },
   { icon: CircleCheck, big: 'No', small: 'obligation to apply' }
 ]
+const usps = props.usps || defaultUsps
 </script>
 
 <template>
@@ -45,7 +55,7 @@ const usps = [
 
     <div class="wrap inner">
       <header class="header">
-        <a href="#top" aria-label="Finding Funding, back to top"><BrandLogo :size="22" /></a>
+        <a href="#top" :aria-label="`${SITE.brand}, back to top`"><BrandLogo :size="22" /></a>
         <a href="#enquire" class="btn btn-small">Request a callback <ArrowRight :size="16" :stroke-width="2" aria-hidden="true" /></a>
       </header>
 
@@ -53,12 +63,12 @@ const usps = [
         <div class="intro">
           <p class="kicker">
             <svg width="12" height="12" viewBox="0 0 9 9" aria-hidden="true"><rect width="9" height="9" rx="2.5" fill="#ff9472" /></svg>
-            Growth Guarantee Scheme · Broker enquiries
+            {{ kicker }}
           </p>
-          <h1>Find your route to <span>Growth Guarantee Scheme</span> finance</h1>
-          <p class="lead">The Growth Guarantee Scheme (GGS) helps smaller UK businesses get finance. We check if it could fit you, then introduce you to a lender.</p>
+          <h1>{{ titleBefore }}<span>{{ titleAccent }}</span>{{ titleAfter }}</h1>
+          <p class="lead">{{ lead }}</p>
           <ul class="usps" role="list">
-            <li v-for="u in usps" :key="u.big" class="usp">
+            <li v-for="u in usps" :key="u.big + u.small" class="usp">
               <component :is="u.icon" :size="26" class="icon icon-dark" aria-hidden="true" />
               <span><strong>{{ u.big }}</strong><small>{{ u.small }}</small></span>
             </li>

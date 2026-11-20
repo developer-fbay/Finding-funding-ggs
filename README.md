@@ -1,6 +1,6 @@
 # Finding Funding · GGS one-pager (Vue)
 
-A one-page lead capture site about the Growth Guarantee Scheme (GGS), plus a privacy policy page.
+Lead capture pages: a one-pager about the Growth Guarantee Scheme (GGS), a general business loans page (`business-loans.html`), plus a privacy policy page.
 Built with **Vue 3 + Vite**, **Lucide** icons (`@lucide/vue`) and self-hosted **Inter / Inter Tight** fonts.
 The build is plain static files, so it can be hosted anywhere (Cloudflare Pages recommended).
 
@@ -40,7 +40,9 @@ Settings are baked in at build time, so rebuild after changing `.env`.
 ## Structure
 
 ```
-index.html, privacy.html     the two pages (nothing else, per the brief)
+index.html                   GGS one-pager (src/App.vue)
+business-loans.html          business loans page (src/LoansApp.vue, sections in src/components/loans/)
+privacy.html                 privacy policy (draft, unlinked)
 src/config.js                reads .env
 src/boot.js                  CookieYes + GTM loader (host-gated)
 src/composables/useLeadForm.js   form fields, Lendpoint messages, validation, send
@@ -71,6 +73,15 @@ Pushed **once, only after the webhook confirms**, never in demo mode or for the 
 ```
 
 Change from the earlier two-step build: there is no `ggs_fit` any more (the form no longer asks eligibility questions; that check happens on the callback) and no `ggs_form_step` event. See planning/TRACKING-SPEC.md (updated for the single-step form).
+
+## Business loans page
+
+`business-loans.html` reuses the GGS page's hero, form, "How it works", closing CTA and footer. Those components take their text as props; with no props they show the GGS page's text, so the two pages can't drift apart.
+
+Sections: hero → "What do you need it for?" → types of finance → why use a broker → how it works → examples (labelled as illustrations) → FAQ → CTA.
+
+- **"What do you need it for?"** (`loans/PurposeTiles.vue`): dark panel with the coral logo ghost (desktop only, never behind text), six numbered tiles two across. A tile picks the form's purpose and jumps to the form; the picked tile gets a coral outline. Ad links can do the same with `?purpose=cashflow|stock|equipment|growth|invoices|tax`.
+- Footer: `<SiteFooter :ggs="false" />` swaps the GGS links for this page's sections.
 
 ## Images and video
 
@@ -120,6 +131,8 @@ Scores on 19 Nov 2026 (visible text): hero 7, what GGS is 4, key features 6, who
 - [ ] Re-link the privacy policy once it's final. It's unlinked for the review (19 Nov 2026) but still built and noindexed: add the link back under the form button ("See our privacy policy") and in the footer's Company column. The form must link to it before it collects real enquiries.
 - [ ] Codi approves Lendpoint's success message for this page ("within one working day", "a realistic range", "lenders that fit") and that "Won't trigger a credit check" is true.
 - [ ] Codi approves the FAQ answers on refinancing (from toolkit p7, not the approved wording) and on credit searches.
+- [ ] Business loans page: Codi confirms the typical amounts and speeds on the three finance types (£20k to £2m, days to weeks, and so on), the "within days" answer in the FAQ, the "1 working day" hero point, and the startups/sole traders and fees answers. The lender panel is described as "a panel of lenders" until there's a number to quote.
+- [ ] Both pages send the same `form_id`, so loans enquiries look like GGS ones in GTM and Close (only `landing_page` tells them apart). Decide whether the loans page gets its own form ID and Close activity before running ads to it.
 - [ ] Codi approves the plain-English versions of the scheme facts. The brief said to use the toolkit wording word for word; it's now in the "Official scheme info" drop-downs, with our plain summaries on show.
 - [ ] Remove `<meta name="robots" content="noindex, nofollow">` from both HTML files.
 - [ ] Change `og:url` and `og:image` in both HTML files from `finding-funding-ggs.pages.dev` to the live domain. The link preview image is `public/og-image.png` (1200×630, the favicon mark on ink).

@@ -1,6 +1,6 @@
 // Callback form logic: same fields, order and messages as lendpoint.co.uk,
 // plus hidden tracking fields and a honeypot.
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import { SITE, demoMode } from '../config.js'
 import { captureTracking, leadSource, toE164, pushEvent, FORM_ID } from './useTracking.js'
 
@@ -15,6 +15,15 @@ export const PURPOSES = [
   { value: 'tax', label: 'A tax bill' },
   { value: 'unsure', label: 'Not sure yet' }
 ]
+
+// Lets other sections (e.g. purpose tiles) pre-pick the form's purpose, and see which is picked.
+// The form also reads ?purpose=cashflow from the URL so ads can deep-link.
+export const presetPurpose = ref('')
+export const currentPurpose = ref('')
+export function choosePurpose(value) {
+  presetPurpose.value = ''
+  presetPurpose.value = value
+}
 
 export const MESSAGES = {
   full_name: 'Enter your name.',
@@ -58,6 +67,11 @@ const RULES = {
 export function useLeadForm() {
   const fields = reactive({ full_name: '', company: '', email: '', phone: '', amount: '', purpose: '', website: '' })
   const errors = reactive({})
+  const fromUrl = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('purpose') : ''
+  if (fromUrl && PURPOSES.some((p) => p.value === fromUrl)) fields.purpose = fromUrl
+  // 'sync' so picking the same tile again still applies after the visitor changed the dropdown.
+  watch(presetPurpose, (v) => { if (v) { fields.purpose = v; errors.purpose = '' } }, { flush: 'sync' })
+  watch(() => fields.purpose, (v) => { currentPurpose.value = v }, { immediate: true })
   const status = ref('idle') // idle | sending | sent | failed
   let startedAt = 0
 

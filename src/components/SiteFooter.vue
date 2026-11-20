@@ -4,9 +4,17 @@
 import BrandLogo from './BrandLogo.vue'
 import { SITE } from '../config.js'
 
-// On the privacy page the section links need to point back to the one-pager.
-const props = defineProps({ home: { type: String, default: '' } })
+// `home`: on the privacy page the section links point back to the one-pager.
+// `ggs`: false on the business loans page, which has its own description and section links.
+const props = defineProps({
+  home: { type: String, default: '' },
+  ggs: { type: Boolean, default: true }
+})
 const to = (hash) => `${props.home}${hash}`
+const pageCol = props.ggs
+  ? { title: 'The scheme', links: [['#about', 'What is GGS?'], ['#features', 'Key features'], ['#eligibility', 'Who can apply'], ['#how', 'How it works']] }
+  : { title: 'Business finance', links: [['#need', 'What it’s for'], ['#types', 'Types of finance'], ['#why', 'Why use a broker'], ['#how', 'How it works']] }
+const blurb = props.ggs ? 'Growth Guarantee Scheme finance for smaller UK businesses.' : 'Business loans and finance for UK businesses.'
 
 const year = new Date().getFullYear()
 function cookieSettings(e) {
@@ -21,16 +29,13 @@ function cookieSettings(e) {
       <div class="top">
         <div class="about">
           <a :href="to('#top')" class="brand-link" :aria-label="`${SITE.brand}, back to top`"><BrandLogo :size="20" /></a>
-          <p>Growth Guarantee Scheme finance for smaller UK businesses. {{ SITE.brand }} is a broker, not a lender.</p>
+          <p>{{ blurb }} {{ SITE.brand }} is a broker, not a lender.</p>
         </div>
         <nav class="cols" aria-label="Footer">
           <div>
-            <p class="col-title">The scheme</p>
+            <p class="col-title">{{ pageCol.title }}</p>
             <ul role="list">
-              <li><a :href="to('#about')">What is GGS?</a></li>
-              <li><a :href="to('#features')">Key features</a></li>
-              <li><a :href="to('#eligibility')">Who can apply</a></li>
-              <li><a :href="to('#how')">How it works</a></li>
+              <li v-for="[hash, text] in pageCol.links" :key="hash"><a :href="to(hash)">{{ text }}</a></li>
             </ul>
           </div>
           <div>

@@ -1,14 +1,18 @@
 <script setup>
 import { ShieldCheck, ArrowRight } from '@lucide/vue'
 import LogoGhost from './LogoGhost.vue'
+defineProps({
+  title: { type: String, default: 'See if GGS could fit your business' },
+  note: { type: String, default: 'Won’t trigger a credit check. No obligation.' }
+})
 </script>
 
 <template>
   <section class="wrap cta-wrap" aria-labelledby="cta-title">
     <div class="cta">
       <div class="text">
-        <h2 id="cta-title">See if GGS could fit your business</h2>
-        <p><ShieldCheck :size="18" class="icon" aria-hidden="true" />Won’t trigger a credit check. No obligation.</p>
+        <h2 id="cta-title">{{ title }}</h2>
+        <p><ShieldCheck :size="18" class="icon" aria-hidden="true" />{{ note }}</p>
         <a href="#enquire" class="btn btn-dark">Request a callback <ArrowRight :size="18" :stroke-width="2" aria-hidden="true" /></a>
       </div>
       <div class="ghost"><LogoGhost :size="340" stroke="#0a0d14" fill="#0a0d14" route="#0a0d14" :stroke-width="2" :route-opacity="0.5" :fill-opacity="0.92" :stroke-opacity="0.35" /></div>
