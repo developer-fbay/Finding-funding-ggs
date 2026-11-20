@@ -58,7 +58,7 @@ src/assets/                  photos (see "Images" below)
 Matches lendpoint.co.uk's live form (checked 18 Nov 2026): one step, same fields and order, same purpose list, same messages.
 
 - Fields: Full name, Company, Business email, Phone (UK), Roughly how much? (min £20,000), What is this for?
-- "What is this for?" is a native `<select>`. Its open list is styled to match the site with CSS customisable selects (`appearance: base-select`) in Chrome and Edge; other browsers show their standard list. Keyboard, screen reader and autofill behaviour are the browser's own.
+- "What is this for?" is a native `<select>`. Its open list is styled to match the site with CSS customisable selects (`appearance: base-select`) in Chrome and Edge; other browsers show their standard list. Keyboard, screen reader and autofill behaviour are the browser's own. The chosen option stays on one line; if it's too long for the field (e.g. "Buying or developing property" on desktop) it fades out before the arrow.
 - "Website" is a **hidden honeypot**, exactly as on Lendpoint. People never see it; if a bot fills it, the page shows success but sends nothing.
 - Hidden tracking: `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `gclid`, `gbraid`, `wbraid`, `gad_source`, `landing_page`, `referrer`. Read from the URL, no cookies.
 - Payload also carries `lead_source` (PPC / Email / Web Inbound), `purpose_label`, `fill_seconds` (spam signal), `submitted_at`.

@@ -1,5 +1,5 @@
 <script setup>
-import { nextTick, ref } from 'vue'
+import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import { Clock, Phone, ShieldCheck, ArrowRight, ChevronDown, CircleAlert, CircleCheck } from '@lucide/vue'
 import { useLeadForm, PURPOSES, MESSAGES } from '../composables/useLeadForm.js'
 
@@ -13,6 +13,25 @@ function soft(name) {
 const formEl = ref(null)
 const resultTitle = ref(null)
 const sendError = ref(null)
+
+// The chosen purpose stays on one line. When it's too long for the field, it fades out
+// before the arrow (class "long"); short ones are left untouched.
+const purposeEl = ref(null)
+const purposeLong = ref(false)
+function measurePurpose() {
+  const el = purposeEl.value
+  purposeLong.value = !!el && el.scrollWidth > el.clientWidth + 1
+}
+let resizeObs = null
+watch(purposeEl, (el) => {
+  resizeObs?.disconnect()
+  resizeObs = null
+  if (el && typeof ResizeObserver === 'function') { resizeObs = new ResizeObserver(measurePurpose); resizeObs.observe(el) }
+  measurePurpose()
+})
+watch(() => fields.purpose, () => nextTick(measurePurpose))
+document.fonts?.ready.then(measurePurpose)
+onBeforeUnmount(() => resizeObs?.disconnect())
 
 const TEXT_FIELDS = [
   { name: 'full_name', label: 'Full name', type: 'text', autocomplete: 'name' },
@@ -86,9 +105,9 @@ async function onSubmit() {
         </div>
 
         <div class="field-wrap">
-          <div class="field select" :class="{ invalid: errors.purpose, empty: !fields.purpose }">
+          <div class="field select" :class="{ invalid: errors.purpose, empty: !fields.purpose, long: purposeLong }">
             <label for="f-purpose">What is this for?</label>
-            <select id="f-purpose" name="purpose" v-model="fields.purpose"
+            <select id="f-purpose" ref="purposeEl" name="purpose" v-model="fields.purpose"
               :aria-invalid="errors.purpose ? 'true' : 'false'"
               :aria-describedby="errors.purpose ? 'e-purpose' : undefined"
               @change="check('purpose')">
@@ -165,6 +184,14 @@ form { display: flex; flex-direction: column; gap: 14px; }
    so keyboard, screen reader and autofill behaviour don't change. */
 @supports (appearance: base-select) {
   .select select, .select select::picker(select) { appearance: base-select; }
+  /* Keep the chosen option on one line inside the field. Ones too long for it ("long", set in
+     the script) fade out before the arrow; the text sits in the browser's own part of the
+     select, so text-overflow: ellipsis can't reach it. */
+  .select select { white-space: nowrap; overflow: hidden; }
+  .select.long select {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 72px), transparent calc(100% - 42px));
+    mask-image: linear-gradient(to right, #000 calc(100% - 72px), transparent calc(100% - 42px));
+  }
   .select select::picker-icon { display: none; }
   .select:has(select:open) .chev { rotate: 180deg; }
   .select select::picker(select) {

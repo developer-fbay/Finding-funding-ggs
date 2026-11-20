@@ -84,18 +84,23 @@ const usps = props.usps || defaultUsps
 </template>
 
 <style scoped>
-.hero { position: relative; overflow: hidden; background: var(--ink); color: #fff; }
+/* At least one screen tall (svh = the height with the phone's browser bars showing, so it
+   doesn't jump). Content is centred below the header; taller content just makes it taller. */
+.hero {
+  position: relative; overflow: hidden; background: var(--ink); color: #fff;
+  display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh;
+}
 .media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
 .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,13,20,.86) 0%, rgba(10,13,20,.72) 45%, var(--ink) 100%); }
 @media (min-width: 960px) {
   .scrim { background: linear-gradient(90deg, rgba(10,13,20,.93) 0%, rgba(10,13,20,.74) 48%, rgba(10,13,20,.38) 100%); }
 }
-.inner { position: relative; }
+.inner { position: relative; flex: 1; display: flex; flex-direction: column; }
 .header { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .header > a:first-child { text-decoration: none; }
 @media (max-width: 420px) { .header .btn-small { height: 44px; padding: 0 12px; font-size: .8125rem; } }
 
-.grid { display: grid; gap: 28px; padding: 24px 0 56px; }
+.grid { flex: 1; display: grid; gap: 28px; padding: 24px 0 56px; align-content: center; }
 @media (min-width: 1024px) {
   .grid { grid-template-columns: minmax(0, 1fr) 500px; gap: 56px; padding: 56px 0 96px; align-items: start; }
   .intro { padding-top: 24px; }
