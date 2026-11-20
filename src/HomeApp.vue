@@ -10,7 +10,7 @@ import LoansFaq from './components/loans/LoansFaq.vue'
 import ClosingCta from './components/ClosingCta.vue'
 import SiteFooter from './components/SiteFooter.vue'
 
-// General business loans page. Reuses the GGS page's hero, form, how it works, CTA and footer.
+// Home page: business loans. Reuses the GGS page's hero, form, how it works, CTA and footer.
 // Figures (amounts, speeds, timings) still need Codi's sign-off: see README "Before go-live".
 const usps = [
   { icon: Zap, big: '1 working day', small: 'to hear back from us' },

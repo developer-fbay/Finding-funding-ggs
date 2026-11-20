@@ -4,16 +4,18 @@
 import BrandLogo from './BrandLogo.vue'
 import { SITE } from '../config.js'
 
-// `home`: on the privacy page the section links point back to the one-pager.
-// `ggs`: false on the business loans page, which has its own description and section links.
+// `ggs`: true on the Growth Guarantee Scheme page; false on the home page (business loans)
+// and the privacy page, which use the home page's description and section links.
+// `home`: set on pages without those sections, so section links point back to that page.
 const props = defineProps({
   home: { type: String, default: '' },
   ggs: { type: Boolean, default: true }
 })
-const to = (hash) => `${props.home}${hash}`
+const to = (href) => (href.startsWith('#') ? `${props.home}${href}` : href)
 const pageCol = props.ggs
   ? { title: 'The scheme', links: [['#about', 'What is GGS?'], ['#features', 'Key features'], ['#eligibility', 'Who can apply'], ['#how', 'How it works']] }
-  : { title: 'Business finance', links: [['#need', 'What it’s for'], ['#types', 'Types of finance'], ['#why', 'Why use a broker'], ['#how', 'How it works']] }
+  : { title: 'Business finance', links: [['#need', 'What it’s for'], ['#types', 'Types of finance'], ['#why', 'Why use a broker'], ['#how', 'How it works'], ['./growth-guarantee-scheme.html', 'Growth Guarantee Scheme']] }
+const otherPage = props.ggs ? ['./index.html', 'All business finance'] : null
 const blurb = props.ggs ? 'Growth Guarantee Scheme finance for smaller UK businesses.' : 'Business loans and finance for UK businesses.'
 
 const year = new Date().getFullYear()
@@ -43,6 +45,7 @@ function cookieSettings(e) {
             <ul role="list">
               <li><a :href="to('#enquire')">Request a callback</a></li>
               <li><a :href="to('#questions')">Questions</a></li>
+              <li v-if="otherPage"><a :href="otherPage[0]">{{ otherPage[1] }}</a></li>
               <li v-if="SITE.cookieYesId"><a href="#" @click="cookieSettings">Cookie settings</a></li>
             </ul>
           </div>

@@ -62,7 +62,7 @@ import SiteFooter from './components/SiteFooter.vue'
     <p>To ask about your data or use any of your rights, ask us on your call or reply to any email we’ve sent you.</p>
     <p>If you’re unhappy with how we’ve handled your data, you can complain to the Information Commissioner’s Office (ICO) at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
   </main>
-  <SiteFooter home="./index.html" />
+  <SiteFooter home="./index.html" :ggs="false" />
 </template>
 
 <style scoped>

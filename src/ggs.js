@@ -3,6 +3,6 @@ import '@fontsource-variable/inter'
 import '@fontsource-variable/inter-tight'
 import './styles/base.css'
 import { createApp } from 'vue'
-import LoansApp from './LoansApp.vue'
+import GgsApp from './GgsApp.vue'
 
-createApp(LoansApp).mount('#app')
+createApp(GgsApp).mount('#app')
