@@ -84,11 +84,11 @@ function pick(v) {
 .tile {
   width: 100%; height: 100%; text-align: left; font: inherit; color: var(--ink); cursor: pointer;
   display: flex; flex-direction: column; gap: 8px; padding: 18px; border-radius: var(--r-md);
-  background: var(--zinc-100); border: 1px solid transparent;
-  transition: background-color .15s, border-color .15s, box-shadow .15s, transform .15s;
+  background: #fff; border: 1px solid var(--zinc-200);
+  transition: background-color .15s, border-color .15s, transform .15s;
 }
 @media (min-width: 640px) { .tile { padding: 26px; gap: 10px; } }
-.tile:hover { background: #fff; border-color: var(--zinc-200); box-shadow: var(--shadow-card); transform: translateY(-2px); }
+.tile:hover { background: var(--zinc-100); transform: translateY(-2px); }
 .tile.selected { background: var(--coral-tint); border-color: var(--coral); }
 .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
 .num { font-size: .8125rem; font-weight: 600; color: var(--zinc-600); font-variant-numeric: tabular-nums; }
